@@ -1,7 +1,2 @@
 media:
  input: src/content/media
-content:
-  - name: CONFIG
-  - label: Blog Config
-  - type: file
-  - path: blog-config.yaml
