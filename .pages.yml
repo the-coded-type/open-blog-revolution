@@ -2,6 +2,55 @@ media:
  input: src/content/media
 content:
   - name: CONFIG
-  - label: "Blog Config"
-  - type: file
-  - path: blog-config.yaml
+    label: "Blog Config"
+    type: file
+    path: blog-config.yaml
+    fields: 
+      - name: TITLE
+        label: Blog title
+        type: string
+      - name: URL
+        label: Blog url
+        type: string
+      - name: DESCRIPTION
+        label: Blog description
+        type: string
+      - name: LANG
+        label: Blog language
+        type: string
+        default: EN
+      - name: AUTHOR
+        label: Author name
+        type: string
+      - name: CONTACT
+        label: Display contact email
+        type: string
+      - name: EMAIL
+        label: Contact email
+        type: string
+      - name: POST_COVER
+        label: Display post cover
+        type: boolean
+        default: true
+      - name: POST_THUMBNAILS
+        label: Display post thumbnails
+        type: boolean
+        default: true
+      - name: POST_SUGGESTIONS
+        label: Display post suggestions
+        type: boolean
+        default: true
+      - name: HOME_NB_POSTS
+        label: Number posts on homepage
+        type: number
+        default: 6
+      - name: MENU
+        label: Navigation menu
+        type: list
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: url
+            label: URL
+            type: string
