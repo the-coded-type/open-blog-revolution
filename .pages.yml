@@ -5,6 +5,7 @@ content:
     label: Posts
     type: collection
     path: src/content/posts
+    filename: '{primary}.mdx'
     fields:
       - name: title
         label: Title
