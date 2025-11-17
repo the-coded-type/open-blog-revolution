@@ -3,6 +3,8 @@ import Tags from "./tags.astro";
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("posts");
 
+console.log(allPosts)
+
 const { queryFilters, heading, nbPosts, hasCover = false } = Astro.props;
 
 const tagFilters: string[] = [].concat( queryFilters?.tags || ["all"]);
