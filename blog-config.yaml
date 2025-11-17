@@ -9,3 +9,6 @@ POST_COVER: true
 POST_THUMBNAILS: true
 POST_SUGGESTIONS: true
 HOME_NB_POSTS: 6
+MENU:
+  - label: Google
+    url: http://www.google.com
