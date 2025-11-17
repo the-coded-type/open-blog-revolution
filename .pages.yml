@@ -9,3 +9,12 @@ content:
       - name: TITLE
         label: Blog title
         type: string
+      - name: URL
+        label: Blog url
+        type: string
+      - name: DESCRIPTION
+        label: Blog description
+        type: string
+      - name: LANG
+        label: Blog language
+        type: string
