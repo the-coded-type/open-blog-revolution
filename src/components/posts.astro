@@ -5,15 +5,18 @@ const allPosts = await getCollection("posts");
 
 const { queryFilters, heading, nbPosts, hasCover = false } = Astro.props;
 
-console.log('hasCover', hasCover)
-
 const tagFilters: string[] = [].concat( queryFilters?.tags || ["all"]);
 
 const postFilters: string[] = [].concat( queryFilters?.posts || [""] );
 
-const filteredByTag = allPosts.filter( post =>
+const filteredByDraftStatus = allPosts.filter( post => post.data.status === 'published')
+
+const filteredByTag = filteredByDraftStatus.filter( post =>
+
   tagFilters.includes("all") || post.data.tags.some( tag => tagFilters.includes(tag))
 );
+
+
 
 const filteredBySlug = filteredByTag.filter( post => { 
   const slug = post.slug;
@@ -36,7 +39,7 @@ import Cover from "./cover.astro";
       
     )}
     {posts.map(async (post) => {
-        const eltPostWrapperCLass = (hasCover && post.data.cover && post.data.cover.src && CONFIG.COVER == true) ? "duo-lg mt-base" : "block mt-base";
+        const eltPostWrapperCLass = (hasCover && post.data.cover && post.data.cover.src && CONFIG.POST_COVER == true) ? "duo-lg mt-base" : "block mt-base";
         // Mark the map callback as async
         return (
           <elt-post>
@@ -51,7 +54,7 @@ import Cover from "./cover.astro";
                   })}
                 </elt-date>
             <elt-post-wrapper class={eltPostWrapperCLass}>
-              {(hasCover && post.data.cover && post.data.cover.src && CONFIG.COVER == true) && (
+              {(hasCover && post.data.cover && post.data.cover.src && CONFIG.POST_COVER == true) && (
                 <elt-post-cover class="block">
                     <Cover src={post.data.cover.src} alt={post.data.cover.alt || ''} className="mt-0 "/>
                 </elt-post-cover>

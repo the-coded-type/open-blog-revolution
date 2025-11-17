@@ -8,11 +8,11 @@ import Tags from "src/components/tags.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const allPosts = await getCollection("posts");
 
-  return posts.map((post) => {
-    // const slug = post.data.postSlug || sanitizeString(post.data.title);
-    // const slug = post.id;
+  const publishedPosts = allPosts.filter(post => post.data.status === 'published')
+
+  return publishedPosts.map((post) => {
     return {
       params: { slug: post.slug },
       props: { post },
@@ -32,13 +32,13 @@ const queryFilters = {
     posts: slug
 }
 
-const heading = "<p class='mt-base strong'>You might also be interested in the following posts</p>";
+import {frontmatter} from "../data/post-suggestion-heading.mdx"
 
 import Cover from "src/components/cover.astro";
 ---
 
 <Baselayout title={title} description={description} >
-  {(post.data.cover && post.data.cover.src && CONFIG.COVER == true) && (
+  {(post.data.cover && post.data.cover.src && CONFIG.POST_COVER == true) && (
     <Cover src={post.data.cover.src} alt={post.data.cover.alt || ''} />
   )}
   
@@ -63,7 +63,7 @@ import Cover from "src/components/cover.astro";
     </article-head>
 
     <Content />
-    <PostFooter queryFilters={queryFilters} heading={heading} nbPosts={2}/>
+    <PostFooter queryFilters={queryFilters} heading={frontmatter.postSuggestionHeading} nbPosts={2}/>
   </article>
   <PrintFooter />
 

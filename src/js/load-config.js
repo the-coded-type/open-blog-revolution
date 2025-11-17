@@ -52,8 +52,13 @@ const DEFAULT_CONFIG = {
     CONTACT: true,
     EMAIL: 'contact@contact.com',
     COVER: false,
-    POST_SUGGESTIONS: true,
-    HOME_NB_POSTS: 4
+    POST_COVER: true,
+    POST_THUMBNAILS: true,
+    HOME_NB_POSTS: 4,
+    MENU: [
+        {
+        label: "RSS",
+        url: "rss.xml"}]
 };
 
 const createConfig = (defaultConfig, userConfig) => {

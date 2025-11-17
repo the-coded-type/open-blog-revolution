@@ -12,7 +12,7 @@ import { defineCollection, z } from 'astro:content';
 const posts = defineCollection({
     type: 'content', // It's good practice to explicitly state the type
     schema: ({ image }) => z.object({
-        isDraft: z.boolean(),
+        status: z.enum(['published', 'draft']),
         title: z.string(),
         description: z.string(),
         pubDate: z.date(),

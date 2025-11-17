@@ -10,7 +10,7 @@ import PostFooterText from "../data/post-footer.mdx"
 ---
 <post-footer class="block mt-lg">
     <PostFooterText />
-    {CONFIG.POST_SUGGESTIONS &&
+    {CONFIG.POST_THUMBNAILS &&
         <AllPosts queryFilters={queryFilters} heading={heading} nbPosts={nbPosts} />
     }
     
