@@ -44,3 +44,14 @@ content:
         label: Number posts on homepage
         type: number
         default: 6
+      - name: MENU
+        label: Navigation menu
+        default: 6
+        type: list
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: url
+            label: URL
+            type: string
