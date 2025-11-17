@@ -6,6 +6,10 @@ content:
     type: collection
     path: src/content/posts
     fields:
+      - name: pubDate
+        label: Publication Date
+        type: date
+        format: yyyy-MM-dd
       - name: status
         label: Status
         type: string
@@ -22,9 +26,6 @@ content:
         label: Tags
         type: string
         list: true
-      - name: body
-        label: Body
-        type: rich-text
         
   
 
