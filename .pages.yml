@@ -16,6 +16,19 @@ content:
         label: Blog description
         type: string
       - name: LANG
-        label: "Blog language"
+        label: Blog language
         type: string
         default: EN
+      - name: AUTHOR
+        label: Author name
+        type: string
+      - name: CONTACT
+        label: Display contact email
+        type: string
+      - name: EMAIL
+        label: Contact email
+        type: string
+      - name: POST_COVER
+        label: Display post cover
+        type: boolean
+        default: true
