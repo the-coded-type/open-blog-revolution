@@ -1,17 +1,6 @@
-CONFIG: 
-    TITLE: My nice blog
-    URL: www.url.com
-    DESCRIPTION: This is a blog about so many things
-    LANG: EN
-    AUTHOR: John Doe
-    CONTACT: true
-    EMAIL: contact@contact.com
-    POST_COVER: true
-    POST_THUMBNAILS: true
-    POST_SUGGESTIONS: true
-    HOME_NB_POSTS: 6
-    MENU:
-        -  label: RSS
-           url: /rss.xml
-        -  label: About
-           url: /about
+TITLE: Nice blog
+LANG: EN
+POST_COVER: true
+POST_THUMBNAILS: true
+POST_SUGGESTIONS: true
+HOME_NB_POSTS: 6
