@@ -60,23 +60,7 @@ content:
         label: "Home intro text"
         type: text
         
-  - name: postFooter
-    label: "Post Footer"
-    type: file
-    path: src/data/post-footer.mdx
-    fields:
-      - name: body
-      - label: "Post Footer"
-      - type: text
 
-  - name: postSuggestionHeading
-    label: "Post Suggestion Heading"
-    type: file
-    path: src/data/post-suggestion-heading.mdx
-    fields: 
-      - name: body
-      - label: "Post Suggestion Heading"
-      - type: text
 
   - name: footer
     label: "Footer text"
