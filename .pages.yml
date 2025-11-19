@@ -58,7 +58,7 @@ content:
     fields:
       - name: body
         label: Body
-        type: rich-text
+        type: text
         required: true
       
   - name: CONFIG
