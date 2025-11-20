@@ -27,13 +27,13 @@ function remarkExtendBlockquote () {
           attributes: [],
           children: [{ 
             type: 'mdxJsxFlowElement',
-            name: 'blockquote-quote',
+            name: 'p',
             attributes: [],
             children: [{ type: 'text', value: blockquoteQuote }]
           },
           { 
             type: 'mdxJsxFlowElement',
-            name: 'blockquote-by',
+            name: 'cite',
             attributes: [],
             children: [{ type: 'text', value: blockquoteBy }]
           }
@@ -67,7 +67,6 @@ function remarkExtendImage () {
 
         visit(tree, 'image', function (node, index, parent) {
             const imageAlt = node.alt || '';
-            const imageTitle = `Image: ${node.title}` || '';
             const imageUrl = node.url || '';
             
             let newNode;
@@ -78,7 +77,6 @@ function remarkExtendImage () {
               return
             } 
 
-          console.log('node.url ', node.url )
             // 2. Resolve the absolute path of the image
           const absoluteImagePath = path.resolve(
             path.dirname(file.path), // Path of the .mdx file
@@ -121,16 +119,20 @@ function remarkExtendImage () {
                         {type: 'mdxJsxAttribute', name: 'width', value: 1080},   
                         {type: 'mdxJsxAttribute', name: 'sizes', value: '(max-width: 360px) 240px, (max-width: 720px) 480px, (max-width: 1600px) 720px'},          
                     ], 
-                },
-                {
-                    type: 'mdxJsxFlowElement',
-                    name: 'figcaption',
-                    attributes: [],
-                    children: [{ type: 'text', value: imageTitle }]
-                  }
+                }
             ]
           }
-          console.log('absoluteImagePath ', absoluteImagePath )
+
+          if (node.title) {
+            const imageTitle = `Image: ${node.title}`;
+            newNode.children.push(
+              {type: 'mdxJsxFlowElement',
+                name: 'figcaption',
+                attributes: [],
+                children: [{ type: 'text', value: imageTitle }]
+               }
+            )
+          }
 
 
           // 3. THE SAFETY CHECK: See if the file exists

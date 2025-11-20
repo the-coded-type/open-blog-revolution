@@ -1,22 +1,27 @@
-elt-meta, elt-date, elt-data, elt-template, elt-post, elt-post-link {
+header, article-meta, article-tags, article-footer, elt-data, elt-template, elt-post, elt-post-link {
     display: block;
 }
+
+ul#all-posts {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul#all-posts li {
+    padding: 0;
+    margin: 0;
+}
+
+/* Navigation */ 
 
 nav a:nth-child(2) {
     margin-left: auto;
 }
 
 nav a {
-    margin-right: .8rem;
+    margin-right: var(--gap)
 }
 
-blockquote p code {
-    color: red;
-}
-
-post-footer elt-post-link h2, post-footer elt-post-link h2 a {
-    font-size: var(--size-5);
-    margin-top: var(--gap);
-
-}
+/* End Navigation */ 
 

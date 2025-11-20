@@ -144,7 +144,7 @@ blockquote {
 }
 
 
-blockquote blockquote-quote {
+blockquote p {
     display: block;
     padding: calc(var(--gap) / 2);
 
@@ -153,13 +153,13 @@ blockquote blockquote-quote {
     /* background-color: var(--color-primary-lighter); */
 }
 
-blockquote blockquote-by {
+blockquote cite {
     display: block;
     text-align: right;
     margin: var(--gap) 0;
 }
 
-blockquote blockquote-by::before {
+blockquote cite::before {
     content: "—";
     margin-right: calc(var(--gap) / 2);
 }

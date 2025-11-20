@@ -8,10 +8,9 @@ import PostFooterText from "../data/post-footer.mdx"
 
 
 ---
-<post-footer class="block mt-lg">
+<footer class="article-footer mt-lg">
     <PostFooterText />
     {CONFIG.POST_THUMBNAILS &&
         <AllPosts queryFilters={queryFilters} heading={heading} nbPosts={nbPosts} />
     }
-    
-</post-footer>
+</footer>

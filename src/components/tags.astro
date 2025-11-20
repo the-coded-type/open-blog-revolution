@@ -2,11 +2,11 @@
 import { sanitizeString } from "public/js/util/util";
 const { allPostTags = [] } = Astro.props;
 ---
-<elt-tags style="margin-bottom: 0.5rem;">
+<nav aria-label="Tags">
     {allPostTags.sort().map((cat) => (
         <span>
             <a class="mr-tiny" href={`${import.meta.env.BASE_URL}tags/${sanitizeString(cat)}`}>{cat}</a>
         </span>
       
     ))}
-</elt-tags>
+</nav>

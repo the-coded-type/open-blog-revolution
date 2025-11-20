@@ -19,8 +19,6 @@ import Head from "../components/head.astro";
 import Header from "../components/header.astro"
 import Footer from "src/components/footer.astro";
 
-import { Picture } from "astro:assets";
-
 import { CONFIG } from "@config";
 
 const { frontmatter } = Astro.props;
@@ -28,18 +26,13 @@ const { frontmatter } = Astro.props;
 const props = frontmatter || Astro.props;
 
 const { title = "", description = ""} = props;
-
 ---
-
 <html lang={CONFIG.LANG}>
-
 <Head title={title} description={description} />
 <body class={CONFIG.STYLE}>
-    <print-head>
-        <h1>{CONFIG.TITLE}</h1>
-        <h2>{title}</h2>
-        <h3>{CONFIG.URL}</h3>
-      </print-head>
+    <print-header aria-hidden="true">
+      <!-- Caution do not repeat h1, etc -->
+    </print-header>
     <Header />
     <main class="container-lg centered pw-base">
         <slot />

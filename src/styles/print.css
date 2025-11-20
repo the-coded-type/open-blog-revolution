@@ -7,14 +7,14 @@
 }
 
 
-print-head, print-footer {
+print-header, print-footer {
     display: none;
 }
 
 
 @media print {
 
-    print-head, print-footer {
+    print-header, print-footer {
         display: block;
     }
 

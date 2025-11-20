@@ -10,7 +10,9 @@ import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts");
 
-  const publishedPosts = allPosts.filter(post => post.data.status === 'published')
+  const publishedPosts = allPosts.filter(
+    (post) => post.data.status === "published",
+  );
 
   return publishedPosts.map((post) => {
     return {
@@ -23,50 +25,53 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { slug } = Astro.params;
 const { title, tags, pubDate, description, cover } = post.data;
+
+const isoDate = post.data.pubDate.toISOString();
+const readableDate = post.data.pubDate.toLocaleDateString("en-GB", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+
 const { Content } = await post.render();
 
 import { CONFIG } from "@config";
 
 const queryFilters = {
-    tags: tags,
-    posts: slug
-}
+  tags: tags,
+  posts: slug,
+};
 
-console.log('post tags', tags)
-
-import {frontmatter} from "../data/post-suggestion-heading.mdx"
+import { frontmatter } from "../data/post-suggestion-heading.mdx";
 
 import Cover from "src/components/cover.astro";
 ---
 
-<Baselayout title={title} description={description} >
-  {(post.data.cover && post.data.cover.src && CONFIG.POST_COVER == true) && (
-    <Cover src={post.data.cover.src} alt={post.data.cover.alt || ''} />
-  )}
-  
+<Baselayout title={title} description={description}>
+  {
+    post.data.cover && post.data.cover.src && CONFIG.POST_COVER == true && (
+      <Cover src={post.data.cover.src} alt={post.data.cover.alt || ""} />
+    )
+  }
 
-  <article>
-    <article-head>
+  <article class="post">
+    <header class="article-header">
       <h1>{title}</h1>
-      <elt-meta
-        ><elt-date
-          >{
-            post.data.pubDate.toLocaleDateString("en-GB", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })
-          }</elt-date
-        >
-        <Tags allPostTags = {tags} />
-        </elt-meta>
+      <article-meta>
+        <article-date>
+          <time datetime={isoDate}>{readableDate}</time>
+        </article-date>
+        <Tags allPostTags={tags} />
+      </article-meta>
       <h2 class="text-none">{description}</h2>
-
-    </article-head>
+    </header>
 
     <Content />
-    <PostFooter queryFilters={queryFilters} heading={frontmatter.postSuggestionHeading} nbPosts={2}/>
+    <PostFooter
+      queryFilters={queryFilters}
+      heading={frontmatter.postSuggestionHeading}
+      nbPosts={2}
+    />
   </article>
   <PrintFooter />
-
 </Baselayout>

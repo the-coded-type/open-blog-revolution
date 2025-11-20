@@ -4,14 +4,15 @@ import AllPosts from "../components/posts.astro";
 
 import { CONFIG } from "@config";
 ---
-    <BaseLayout>
-      <h1 class="title">{CONFIG.TITLE}</h1>
-      <div >
-        <p><strong class="alert">You're looking for a page that doesn't exist!</strong></p>
-        <p>Check our latest posts instead: </p>
-      </div>
+<BaseLayout>
+  <h1 class="title">{CONFIG.TITLE}</h1>
+  <div>
+    <p>
+      <strong class="alert"
+        >You're looking for a page that doesn't exist!</strong>
+    </p>
+    <p>Check our latest posts instead:</p>
+  </div>
 
-      <AllPosts />
-    
-    </BaseLayout>
-
+  <AllPosts />
+</BaseLayout>
