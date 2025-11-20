@@ -11,12 +11,5 @@ import Home from "../data/home.mdx"
 <BaseLayout>
   <h1>{CONFIG.TITLE}</h1>
   <Home />
-  <col-wrapper>
-    <col-left>
-      <AllPosts nbPosts={CONFIG.HOME_NB_POSTS} hasCover={CONFIG.POST_COVER}/>
-    </col-left>
-
-    <col-right>
-    </col-right>
-  </col-wrapper>
+    <AllPosts nbPosts={CONFIG.HOME_NB_POSTS} hasCover={CONFIG.POST_COVER}/>
 </BaseLayout>

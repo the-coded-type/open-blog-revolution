@@ -65,87 +65,96 @@ function remarkExtendImage () {
 
       /* End check if the mdx file has an import statement for the Astro Picture component */
 
-        visit(tree, 'image', function (node, index, parent) {
-            const imageAlt = node.alt || '';
-            const imageUrl = node.url || '';
-            
-            let newNode;
-
-            if (!node.url || !node.url.startsWith('.')) {
-              newNode={};
-              parent.children[index] = newNode;
-              return
-            } 
-
-            // 2. Resolve the absolute path of the image
-          const absoluteImagePath = path.resolve(
-            path.dirname(file.path), // Path of the .mdx file
-            node.url             // Relative path of the image
-          );
-            
-            newNode = {
-                    type: 'mdxJsxFlowElement',
-                    name: 'figure',
-                    attributes: [],  
-                    children: [
-                        {
+        visit(tree, 'paragraph', function (node, index, parent) { 
+          // looks for paragraphs because markdown wraps images with p tags, but p tags can't contain figure tags
+          // hence we remove p tags wrapping single img tags
+            if (node.children[0].type == 'image') {
+              const imageNode = node.children[0];
+              const imageAlt = imageNode.alt || '';
+              const imageUrl = imageNode.url || '';
+              
+              let newNode;
+  
+              if (!imageNode.url || !imageNode.url.startsWith('.')) {
+                newNode={};
+                parent.children[index] = newNode;
+                return
+              } 
+  
+              // Resolve the absolute path of the image
+              const absoluteImagePath = path.resolve(
+                path.dirname(file.path), // Path of the .mdx file
+                imageNode.url             // Relative path of the image
+              );
+                
+                newNode = {
                         type: 'mdxJsxFlowElement',
-                        name: 'Picture',
-                        attributes: [{type: 'mdxJsxAttribute', name: 'src', value: {
-                            type: 'mdxJsxAttributeValueExpression',
-                            value: `import('${imageUrl}')`,
-                            data: {
-                                estree: parseExpression(`import('${imageUrl}')`)
+                        name: 'figure',
+                        attributes: [],  
+                        children: [
+                            {
+                            type: 'mdxJsxFlowElement',
+                            name: 'Picture',
+                            attributes: [{type: 'mdxJsxAttribute', name: 'src', value: {
+                                type: 'mdxJsxAttributeValueExpression',
+                                value: `import('${imageUrl}')`,
+                                data: {
+                                    estree: parseExpression(`import('${imageUrl}')`)
+                                  }
+                            }},
+                            {type: 'mdxJsxAttribute', name: 'alt', value: imageAlt},
+                            {type: 'mdxJsxAttribute', name: 'formats', value: {
+                                type: 'mdxJsxAttributeValueExpression',
+                                value: `["avif", "webp"]`,
+                                data: {
+                                  estree: parseExpression(`["avif", "webp"]`)
+                                }
                               }
-                        }},
-                        {type: 'mdxJsxAttribute', name: 'alt', value: imageAlt},
-                        {type: 'mdxJsxAttribute', name: 'formats', value: {
-                            type: 'mdxJsxAttributeValueExpression',
-                            value: `["avif", "webp"]`,
-                            data: {
-                              estree: parseExpression(`["avif", "webp"]`)
-                            }
-                          }
-                        },
-                        {type: 'mdxJsxAttribute', name: 'widths', value: {
-                            type: 'mdxJsxAttributeValueExpression',
-                            value: `[240, 540, 720]`,
-                            data: {
-                              estree: parseExpression(`[240, 540, 720]`)
-                            }
-                          }
-                        },
-                        {type: 'mdxJsxAttribute', name: 'height', value: 720},  
-                        {type: 'mdxJsxAttribute', name: 'width', value: 1080},   
-                        {type: 'mdxJsxAttribute', name: 'sizes', value: '(max-width: 360px) 240px, (max-width: 720px) 480px, (max-width: 1600px) 720px'},          
-                    ], 
-                }
-            ]
-          }
+                            },
+                            {type: 'mdxJsxAttribute', name: 'widths', value: {
+                                type: 'mdxJsxAttributeValueExpression',
+                                value: `[240, 540, 720]`,
+                                data: {
+                                  estree: parseExpression(`[240, 540, 720]`)
+                                }
+                              }
+                            },
+                            {type: 'mdxJsxAttribute', name: 'height', value: 720},  
+                            {type: 'mdxJsxAttribute', name: 'width', value: 1080},   
+                            {type: 'mdxJsxAttribute', name: 'sizes', value: '(max-width: 360px) 240px, (max-width: 720px) 480px, (max-width: 1600px) 720px'},          
+                        ], 
+                    }
+                ]
+              }
+    
+              if (imageNode.title) {
+                const imageTitle = `Image: ${imageNode.title}`;
+                newNode.children.push(
+                  {type: 'mdxJsxFlowElement',
+                    name: 'figcaption',
+                    attributes: [],
+                    children: [{ type: 'text', value: imageTitle }]
+                  }
+                )
+              }
+    
+    
+              // 3. THE SAFETY CHECK: See if the file exists
+              if (!fs.existsSync(absoluteImagePath)) {
+                // 4. If not, log a warning and skip transformation
+                console.warn(
+                  `[remark-astro-images] Image not found at ${node.url}`
+                );
+                newNode={};
+                parent.children[index] = newNode;
+                return; // Leave the node as a broken <img>
+              }
+              parent.children[index] = newNode;
 
-          if (node.title) {
-            const imageTitle = `Image: ${node.title}`;
-            newNode.children.push(
-              {type: 'mdxJsxFlowElement',
-                name: 'figcaption',
-                attributes: [],
-                children: [{ type: 'text', value: imageTitle }]
-               }
-            )
-          }
 
+            }
 
-          // 3. THE SAFETY CHECK: See if the file exists
-          if (!fs.existsSync(absoluteImagePath)) {
-            // 4. If not, log a warning and skip transformation
-            console.warn(
-              `[remark-astro-images] Image not found at ${node.url}`
-            );
-            newNode={};
-            parent.children[index] = newNode;
-            return; // Leave the node as a broken <img>
-          }
-          parent.children[index] = newNode;
+           
       })
     }
 }
