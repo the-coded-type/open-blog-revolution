@@ -6,7 +6,7 @@ Sources:  https://imperavi.com/blog/vertical-rhythm-in-typography/;
 }
 
 :root {
-    --line-height: 1.5;
+    --line-height: 1.4;
 }
 
 body.dark-mode {
@@ -14,7 +14,7 @@ body.dark-mode {
 }
 
 p {
-    line-height: 1.6;
+    line-height: 1.5;
     font-size: var(--size-0);
     margin-block-end: var(--gap);
 }
@@ -28,7 +28,7 @@ ol, ul {
 
 ol, ul, li {
     font-size: var(--size-6);
-    line-height: 1.4;
+    line-height: 1.3;
     margin: 0;
     padding: 0;
     margin-block-end: calc( var(--size-base) / 2);
@@ -136,24 +136,27 @@ body.dark-mode mark, body.dark-mode code {
 }
 
 blockquote {
-    margin: 0 max(calc( var(--gap) / 2 ), 3vw);
-    padding: var(--gap);
+    margin: max(calc( var(--gap) / 2 ), 3vw) 0;
+    padding: 0;
+    border-top: 2px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+
 }
 
 
 blockquote blockquote-quote {
     display: block;
-    padding: var(--gap);
+    padding: calc(var(--gap) / 2);
 
-    border-left: calc(var(--gap) /  2) solid var(--color-primary-light);
+    /* border-left: calc(var(--gap) /  2) solid var(--color-primary-light); */
     font-size: var(--size-4);
-    background-color: var(--color-primary-lighter);
+    /* background-color: var(--color-primary-lighter); */
 }
 
 blockquote blockquote-by {
     display: block;
     text-align: right;
-    margin-top: var(--gap);
+    margin: var(--gap) 0;
 }
 
 blockquote blockquote-by::before {
@@ -213,7 +216,7 @@ table {
     padding: 0;
     margin-block-end: calc(1.5em * 1.3);
 
-    line-height: 1.5;
+    line-height: 1.4;
     font-size: var(--size-0);
 }
 

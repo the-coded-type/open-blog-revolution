@@ -5,6 +5,8 @@ declare module "@config" {
       DESCRIPTION: string;
       LANG: string;
 
+      STYLE: string;
+
       AUTHOR: string;
       CONTACT: boolean;
       EMAIL: string;

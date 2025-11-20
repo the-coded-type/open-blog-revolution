@@ -47,6 +47,7 @@ const DEFAULT_CONFIG = {
     URL: 'www.url.com',
     DESCRIPTION: 'This is a blog about so many things',
     LANG: 'EN',
+    STYLE: 'serif',
     AUTHOR: 'John Doe',
     CONTACT: true,
     EMAIL: 'contact@contact.com',
