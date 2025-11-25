@@ -26,7 +26,7 @@ const { title, description, type } = Astro.props;
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png"><!-- 180×180 -->
 
-    <meta property="og:image" content={CONFIG.BLOG_COVER.src ? `${CONFIG.URL}/${CONFIG.BLOG_COVER.src}` : ""}>
+    <meta property="og:image" content={CONFIG.BLOG_COVER.src ? `${CONFIG.URL}${CONFIG.BLOG_COVER.src}` : ""}>
     <meta property="og:image:alt" content={CONFIG.BLOG_COVER.alt ? CONFIG.BLOG_COVER.alt  : ""}>
 
 </head>
