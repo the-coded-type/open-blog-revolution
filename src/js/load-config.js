@@ -42,17 +42,17 @@ let getUseConfigFromFile = (configFileName) => {
 }
  
 const DEFAULT_CONFIG = {
-    TITLE: 'My blog',
-    URL: 'www.url.com',
-    DESCRIPTION: 'This is a blog about so many things',
+    TITLE: 'Open Blog Revolution',
+    URL: 'www.thecodedtype.com',
+    DESCRIPTION: 'Free blog template for writers',
     LANG: 'EN',
-    STYLE: 'serif',
-    AUTHOR: 'John Doe',
+    STYLE: 'sans',
+    AUTHOR: 'Iko',
     CONTACT: true,
-    EMAIL: 'contact@contact.com',
+    EMAIL: 'iko@thecodedtype.com',
     POST_COVER: true,
     POST_THUMBNAILS: true,
-    HOME_NB_POSTS: 4,
+    HOME_NB_POSTS: 6,
     MENU: [
         {
         label: "RSS",
