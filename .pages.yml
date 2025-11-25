@@ -1,4 +1,8 @@
 media:
+  name: OG_image
+  input: src/content/media
+  output: /
+media:
   input: src/content/media
   output: ../media
 content:
