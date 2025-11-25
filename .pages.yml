@@ -154,3 +154,13 @@ content:
           - name: url
             label: URL
             type: string
+      - name: BLOG_COVER
+        label: Blog Cover
+        type: object
+        fields: 
+          - name: src
+            label: Blog cover image
+            type: image
+          - name: alt
+            label: Blog Cover alt
+            type: string
