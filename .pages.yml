@@ -1,7 +1,7 @@
 media:
   - name: Media
     input: src/content/media
-    output: ../media
+    output: src/content/media
 content:
   - name: posts
     label: Posts
