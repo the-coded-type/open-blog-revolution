@@ -75,7 +75,7 @@ content:
           required: true
         - name: body
           label: Body
-          type: text
+          type: rich_text
         - name: layout
           hidden: true
           default: '../layouts/pagelayout.astro'
