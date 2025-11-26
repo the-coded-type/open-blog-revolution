@@ -2,7 +2,7 @@ media:
   - name: OG_image
     input: src/content/media
     output: /
-  - name: posts
+  - name: Media
     input: src/content/media
     output: ../media
 content:
