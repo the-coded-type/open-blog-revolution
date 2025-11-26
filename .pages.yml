@@ -2,16 +2,12 @@ media:
   - name: Posts_Media
     input: src/content/media
     output: ../media
-  - name: Pages_Media
-    input: src/content/media
-    output: ../content/media
 content:
   - name: posts
     label: Posts
     type: collection
     path: src/content/posts
     filename: '{primary}.mdx'
-    media: Posts_Media
     view:
       fields: [title, pubDate]
     fields:
@@ -67,7 +63,6 @@ content:
     filename: '{primary}.mdx'
     view: [title]
     subfolders: false
-    media: Pages_Media
     fields:
         - name: title
           label: Title
@@ -75,7 +70,7 @@ content:
           required: true
         - name: body
           label: Body
-          type: rich-text
+          type: text
         - name: layout
           hidden: true
           default: '../layouts/pagelayout.astro'
