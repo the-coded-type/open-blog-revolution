@@ -49,7 +49,7 @@ content:
             label: Cover image
             type: image
             options: 
-              media: Posts_Media
+              media: Media
           - name: title
             label: Title
             type: string
