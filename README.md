@@ -120,4 +120,4 @@ Fist logo Created by BnB Studio from [Noun Project](https://thenounproject.com/)
 
 CSS utils inspired by [Kelp UI](https://kelpui.com/) and [Tailwind](https://kelpui.com/)
 
-Resilient WWeb principles learned from [Jeremy Keith](https://resilientwebdesign.com/)
+Resilient Web principles learned from [Jeremy Keith](https://resilientwebdesign.com/)
