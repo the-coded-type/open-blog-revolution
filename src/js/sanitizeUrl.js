@@ -13,6 +13,9 @@ const createSanitizer = (base) => (url) => {
     }
     
     const combined = `${cleanBase}/${url}`;
+
+    console.log("*** createSanitizer combined", base)
+
     
     // Regex fies double // without affecting protocol
     return combined.replaceAll(/(?<!:)\/+/gm, '/');
