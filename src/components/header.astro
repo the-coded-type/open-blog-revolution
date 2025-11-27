@@ -5,7 +5,7 @@ import { CONFIG } from "@config";
     <nav class="flex container-lg w-full">
         <a class="ml-0" href={import.meta.env.BASE_URL}>{CONFIG.TITLE}</a>
         {CONFIG.MENU.map(link => 
-            (<a href={`${import.meta.env.BASE_URL}${link.url.replace(/([^:]\/)\/+/g, "$1")}`}>{link.label}</a>)
+            (<a href={`/${import.meta.env.BASE_URL}/${link.url.replace(/([^:]\/)\/+/g, "$1")}`}>{link.label}</a>)
         )}
         {CONFIG.CONTACT && (
                     <a class="mr-0" href={`mailto:${CONFIG.EMAIL}`}>Contact</a>
