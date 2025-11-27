@@ -61,9 +61,13 @@ OR:
 
 * Every time you modify the blog or its contents, Netlify will automatically update the website.
 
-## Adding content
+## How to start Blogging
 
-### If you want to use a writer friendly backend interface
+⚠️ Now that your blog is installed you need to setup a backend that will allow you to write and publish blogs.
+
+### Writer friendly backend
+
+You can use Pages CMS a free and simple backend.
 
 * Open a free account on [Pages CMS](https://pagescms.org/)
 * Add your OBR GitHub repository as a Project.
@@ -72,6 +76,8 @@ OR:
 * Add Posts and Pages
 
 ### If you're comfortable with using markdown and GitHub
+
+You can edit and create posts in the GitHub repo directly.
 
 * You can add posts as `.mdx `files in the `/src/content/posts` folder
 * You can add pages as `.mdx `files in the `/src/pages` folder
