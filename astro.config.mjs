@@ -13,8 +13,6 @@ import { remarkExtendImage, remarkExtendBlockquote } from "./src/js/plugins/rema
 const site = process.env.SITE_URL || CONFIG.URL;
 const base = process.env.BASE_URL || CONFIG.BASE || '/'
 
-console.log('base', base)
-
 export default defineConfig({
   site: site,
   base: base,

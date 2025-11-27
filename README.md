@@ -45,7 +45,7 @@ Any OBR blog can be hosted anywhere. This document provides instructions to inst
 
 Released under the [MIT License](./LICENSE)
 
-## Installation on Netlify
+## Deploy on Netlify
 Just click the button:
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/the-coded-type/open-blog-revolution)
@@ -60,6 +60,18 @@ OR:
 * Click on the **GitHub** icon. Select your newly created repository.
 
 * Every time you modify the blog or its contents, Netlify will automatically update the website.
+
+## Deploy on GitHub Pages
+
+* On your repository page click on **⚙️ Settings** 
+
+* Head to **Pages**
+
+* **In Build and Deployement** select as `source` `GitHub Actions`
+
+* You blog deploys at https://<user-name>.github.io/<repo-name>
+
+* Check the status of your deployment in your repo page under **Actions**
 
 ## How to start Blogging
 
