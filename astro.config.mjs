@@ -9,10 +9,13 @@ const CONFIG = rawConfig;
 
 import { remarkExtendImage, remarkExtendBlockquote } from "./src/js/plugins/remark-plugins";
 
-// https://astro.build/config
+
+const site = process.env.SITE_URL || CONFIG.URL;
+const base = process.env.BASE_URL || CONFIG.BASE || '/'
+
 export default defineConfig({
-  site: CONFIG.URL,
-  base: CONFIG.BASE,
+  site: site,
+  base: base,
 
   devToolbar: {
       enabled: false
