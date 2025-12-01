@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/baselayout.astro";
+import QueryPosts from "../components/query-posts.astro";
+
+import { CONFIG } from "@config";
+
+import Home from "../data/home.mdx"
+---
+
+<BaseLayout>
+  <h1>Blogroll</h1>
+  <Home />
+</BaseLayout>
