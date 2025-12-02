@@ -15,12 +15,10 @@ ul#all-posts li {
 
 /* Navigation */ 
 
-nav {
-    gap: var(--gap);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
+
+
+nav ul li {
+    margin-left: 0;
 }
 /*
 nav a:nth-child(2) {
