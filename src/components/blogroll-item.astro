@@ -1,0 +1,31 @@
+---
+const {item, displayTitle = true, displayLink=false, displayPubdate = true, displayDescription=true } = Astro.props;
+
+if (!item) {
+  throw new Error("RSS item is required in blogroll-item.astro");
+}
+
+const now = new Date();
+const pubDate = item.pubDate ? new Date(item.pubDate) : null;
+const elapsedMs = now - pubDate; // in ms
+const elapsedMinutes = Math.floor(elapsedMs/1000/60);
+const elapsedHours = Math.floor(elapsedMinutes/60);
+const elapsedDays = Math.floor(elapsedHours/24);
+const elapsedWeeks = Math.floor(elapsedDays/7);
+const elapsedMonths = Math.floor(elapsedDays/30);
+let elapsed;
+
+if (elapsedMonths>0) { elapsed = `${elapsedMonths} month${elapsedMonths == 1 ? '' : 's'} ago`}
+else if (elapsedWeeks>0) {elapsed = `${elapsedWeeks} week${elapsedWeeks == 1 ? '' : 's'} ago`}
+else if (elapsedDays>0) {elapsed = `${elapsedDays} day${elapsedDays == 1 ? '' : 's'} ago`}
+else if (elapsedHours>0) {elapsed = `${elapsedHours} hour${elapsedHours == 1 ? '' : 's'} ago`}
+else if (elapsedMinutes>0) {elapsed = `${elapsedMinutes} minute${elapsedMinutes == 1 ? '' : 's'} ago`}
+else {elapsed='Just now'};
+---
+<section class="rss-item">
+    {item.blogTitle && <div class="blogroll-blog-title mt-lg strong">{item.blogTitle}</div>}
+    {displayTitle && <div  class="mt-base"><a href={item.link}>{item.title}</a></div>}
+    {displayLink && <div class="mt-base"><a href={item.link}>{item.link}</a> </div>}
+    {displayPubdate && elapsed && <div class="mt-base">{elapsed}</div>}
+    {displayDescription && <div class="mt-base" set:html={item.description}></div> }
+</section>

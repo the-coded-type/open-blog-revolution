@@ -1,36 +1,18 @@
 ---
 import BaseLayout from "../layouts/baselayout.astro";
-import QueryPosts from "../components/query-posts.astro";
-
+import BlogrollFeed from "src/components/blogroll-feed.astro";
 import { CONFIG } from "@config";
 
-import Home from "../data/home.mdx"
+const urls2 = [ "https://www.explorersdesign.com/rss/", "https://slowlorispress.com/rss"]
 
-const url = "https://lorem-rss.herokuapp.com/feed?unit=second"
+const urls3 = ["https://www.bastionland.com/feeds/posts/default", "https://thecodedtype.com/rss.xml"]
 
-console.log("Blogroll")
+import { frontmatter } from "../data/blogroll.mdx";
 
-async function getData(url) {
 
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-    const rssText = await response.text();
-    const parser = new DOMParser();
-    const parsedRss = await parser.parseFromString(rssText, 'text/xml');
-    console.log(rssText)
-
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
-getData(url);
 ---
 
 <BaseLayout>
   <h1>Blogroll</h1>
-  <Home />
+  {frontmatter.urls && <BlogrollFeed urls = {frontmatter.urls} />}
 </BaseLayout>

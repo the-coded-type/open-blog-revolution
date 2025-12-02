@@ -1,0 +1,34 @@
+---
+import Parser from 'rss-parser';
+
+import BlogRollItem from '../components/blogroll-item.astro';
+
+async function getRss(url: string) {
+    const parser = new Parser();
+    try {
+        const feed = await parser.parseURL(url);
+        return {success: true, title: feed.title, items: feed.items}
+    } catch (err) {
+        return { success: false, error: `error: ${err}`}
+    }
+}
+
+const { urls } = Astro.props;
+
+const blogroll = [];
+
+for (const url of urls) {
+    const rss = await getRss(url);
+    if (rss.success) {
+        rss.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+        rss.items[0].blogTitle = rss.title;
+        blogroll.push(rss.items[0])
+    }
+}
+
+blogroll.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+        
+---
+<div class="blogroll-feed">
+    {blogroll.map( blog => <BlogRollItem item={blog}/> )}
+</div>
