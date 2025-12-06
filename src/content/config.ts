@@ -19,7 +19,7 @@ const posts = defineCollection({
         tags: z.array(z.string()),
         cover: z.object({
             title: z.string().optional(),
-            src: image().optional(),
+            src: z.string().optional(),
             alt: z.string().optional()
         }).optional()
 

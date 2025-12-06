@@ -1,15 +1,31 @@
 ---
-const {src, alt, className} = Astro.props
+import { getImage, Picture } from "astro:assets";
 
+const { src, alt, className } = Astro.props;
 
-import { Picture } from "astro:assets";
+const images = import.meta.glob("/src/media/**/*.{png,jpg,jpeg,webp}", {
+  eager: true,
+  import: "default",
+});
+
+const match = Object.keys(images).find((path) =>
+  path.includes(src)
+);
+
+console.log("src", src);
+console.log("match", match);
+
+const image = match ? await getImage({ src: images[match] }) : null;
 ---
+
 { src &&
 <Picture
 class={className}
 loading={"lazy"}
-src={src} 
+src={image.src}
 formats={["avif", "webp"]}
+width="1000"
+height="1000"
 alt={alt || ''}
 widths={[240, 540, 720, 1280]}
 sizes="(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, 1280px"
