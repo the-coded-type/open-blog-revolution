@@ -79,16 +79,6 @@ OR:
 
 ⚠️ Now that your blog is installed you need to setup a backend that will allow you to write and publish blogs.
 
-### Writer friendly backend
-
-You can use Pages CMS a free and simple backend.
-
-* Open a free account on [Pages CMS](https://pagescms.org/)
-* Add your OBR GitHub repository as a Project.
-* Open it.
-* Edit the **Blog Connfig**
-* Add Posts and Pages
-
 ### If you're comfortable with using markdown and GitHub
 
 You can edit and create posts in the GitHub repo directly.
