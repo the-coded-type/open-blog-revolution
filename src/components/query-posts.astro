@@ -22,9 +22,10 @@ const filteredBySlug = filteredByTag.filter( post => {
   return !postFilters.includes(slug);
 })
 
+filteredBySlug.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
 const posts = nbPosts ? filteredBySlug.slice(0, nbPosts) : filteredBySlug;
 
-posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 ---
 <PostList posts={posts} heading={heading} hasCover={hasCover} titleTag='h2' descriptionTag='p' sectionHeaderContentClass={sectionHeaderContentClass}/>
