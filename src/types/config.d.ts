@@ -16,6 +16,11 @@ declare module "@config" {
       POST_SUGGESTIONS: boolean;
       
       HOME_NB_POSTS: number;
+
+      BLOG_COVER: {
+        src: string,
+        alt: string
+      }
       
       MENU: {
         label: string,
