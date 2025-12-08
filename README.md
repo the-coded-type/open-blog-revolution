@@ -90,7 +90,7 @@ You can edit and create posts in the GitHub repo directly.
 
 ## Iamges
 
-Mdx posts and frontmatter accept local and remote images.
+Mdx posts accept local and remote images.
 
 Local images must be placed in `src/media`.
 
