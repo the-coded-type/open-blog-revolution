@@ -98,6 +98,25 @@ In .mdx files (like posts) you don't need to specify the full path for images, j
 
 Example: `![ALT](filename.ext TITLE)`
 
+Images in .mdx files must be in their own paragraph slots:
+This is correct 
+
+```markdown
+Some text
+
+![ALT](filename.ext TITLE)
+
+Some text
+```
+
+This is not correct 
+
+```markdown
+Some text
+![ALT](filename.ext TITLE)
+Some text
+```
+
 Cover images path in posts (in frontmatter yaml) must be relative. If your cover image is in `src/media` that would be `../../media/image.ext`
 
 Partial project structure:
