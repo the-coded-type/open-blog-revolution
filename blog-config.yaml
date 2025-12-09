@@ -5,9 +5,12 @@ DESCRIPTION: Free blog template
 LANG: EN
 STYLE: sans
 AUTHOR: Iko
-CONTACT: true
+CONTACT: true #Set to false to omit email/contact link in header
 EMAIL: youremail@email.com
 POST_COVER: true
+# MY_SWITCH: true #uncomment to add additional link to header.
+# MY_LINK: https://link.to.something #copy structure for further links.
+# Edit also relevant parts in 'src/types/config.d.ts' and 'src/components/header.astro'.
 POST_THUMBNAILS: true
 POST_SUGGESTIONS: true
 HOME_NB_POSTS: 6

@@ -17,6 +17,11 @@ declare module "@config" {
       
       HOME_NB_POSTS: number;
 
+      // Uncomment to add link to header. Copy structure for more links.
+      // Edit also 'src/components/header.astro' and 'blog-config.yaml'.
+      // MY_SWITCH: boolean
+      // MY_LINK: string
+
       BLOG_COVER: {
         src: string,
         alt: string

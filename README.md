@@ -88,7 +88,7 @@ You can edit and create posts in the GitHub repo directly.
 * Media (images) must be located in `/src/content/media`
 * Edit `/blog-config.yaml` to configure your blog.
 
-## Iamges
+## Images
 
 Mdx posts accept local and remote images.
 
@@ -149,6 +149,24 @@ cover:
 Posts **must** have at least one tag.
 
 `.mdx` is similar to Markdown but allows you to use HTML tags.
+
+## Blogroll
+The template features a blogroll showing the latest posts from blogs you wish to follow.
+
+The list of followed blogs is located in `src/data/blogroll.mdx`. Adapt this to contain the list of URLs of the feeds you wish to include, following the existing examples.
+
+## Customizing the look of your blog
+The recommended method of customizing your blog is via the file `src/styles/user-styles.css`. Use this to overwrite the defaults set in the other `*.css` files.
+
+The file contains some examples already, and will be expanded at the project develops.
+
+This file also contains descriptions of how to change other files to get your desired look. However, some general notes:
+* The file `src/layouts/baselayout.astro` is the basis of everything on the blog and always gets loeaded.
+* The file `src/pages/[slug].astro` is the basis for all blog posts.
+* The file `src/pages/index.astro` is the front page of your blog. It imports the contents from `/src/data/home.mdx`.
+* The file `src/pages/blogroll.astro` is the blogroll page of your blog.
+* The file `src/pages/404.astro` is a custom 'page not found' page if someone gives an incorrect post URL.
+* Various files in `src/components/` are used to set re-used page elements, such as headers and footers. Their contents are given in `.mdx` files in `/src/data/`.
 
 ## Contributing Policy
 **Feature requests**

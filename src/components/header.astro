@@ -40,6 +40,11 @@ const image = CONFIG.BANNER.src ? imagesArray.filter(([key, val]) => key.endsWit
         {CONFIG.CONTACT && (
             <li><a class="mr-0" href={`mailto:${CONFIG.EMAIL}`}>Contact</a></li>
         )}
+                <!-- {CONFIG.MY_SWITCH && (
+            <li><a class="mr-0" href={`${CONFIG.MY_LINK}`}>My Link Title</a></li>
+        )} -->
+        <!-- Uncomment the above to add further links to your header. 
+         Rename/copy the structure to add more options. Uncomment also in 'src/types/config.d.ts' -->
         </ul>
     </nav>
 </header>

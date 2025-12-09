@@ -1,0 +1,51 @@
+/* If you wish to edit any of the parameters set in :root, 
+uncomment this group. (Text between slashes and asterisks like this
+is treated as a comment rather than code to be executed.) */
+
+/* :root { */
+/* Defining primary and secondary colors. Primary is used for UI elements 
+like horizontal dividers. Secondary is used for e.g links.
+Colors are defined via chroma and hue, so the system can automatically
+compute light and dark versions.
+To find the values you want, use e.g. https://colorpicker.dev/ */
+
+  /* Pimary Definition */  
+  /* --color-primary-chroma: 0.0345;
+  --color-primary-hue: 260; */
+
+  /* Secondary Definition */
+  /* --color-secondary-chroma: 0.194;
+  --color-secondary-hue: 31; */
+
+/* If you want to use different fonts, you can change these font stacks
+They are given in order of preference, with later fonts being fallbacks
+if the first is unavailable.
+If you wish to use another font, the recommended option is to import from
+Fontsource. Add the line 
+    import '@fontsource/name-of-my-font';
+at the start of the 'src/layouts/baselayout.astro' file and add it
+to the beginning of the font stack you wish to add it to.
+(Replace the font name with the font you wish to use. You can search
+available options on https://fontsource.org)
+
+If you want to use the serif font stack across the blog, change 
+'STYLE: sans' to 'STYLE: serif' in 'blog-config.yaml'.
+*/
+
+  /* --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --serif-stack: 'Charter', 'Bitstream Charter', Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif; */
+
+/* } */
+
+/* If you want to overwrite any other style elements, copy the relevant 
+code from the default file and insert below with the parts you
+wish to change. As an example, the horizontal lines between a post
+and the footer is set with the hr element: */
+
+/* hr {
+    height: 1px;
+    color: var(--color-primary-lighter);
+    background: var(--color-primary-lighter);
+    font-size: 0;
+    border: 0;
+} */
