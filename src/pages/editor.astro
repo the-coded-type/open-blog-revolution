@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/baselayout.astro";
+
+import { CONFIG } from "@config";
+
+const postsData = import.meta.glob('../content/posts/*.{mdx, md}', {
+  eager: true,
+});
+
+const allPosts = Object.entries(postsData).map(([key, val]) => ({url: val.url, data: val.frontmatter}))
+
+console.log(postsData)
+
+---
+
+<BaseLayout>
+  <h1>Editor</h1>
+  {allPosts.map(post => <p>{post.data.title}</p> )}
+  {process.env.GITHUB_SERVER_URL && <p>process.env.GITHUB_SERVER_URL {process.env.GITHUB_SERVER_URL}</p> }
+  {process.env.GITHUB_REPOSITORY && <p>process.env.GITHUB_REPOSITORY {process.env.GITHUB_REPOSITORY}</p> }
+  {process.env.GITHUB_REPOSITORY_OWNER && <p>process.env.GITHUB_REPOSITORY_OWNER {process.env.GITHUB_REPOSITORY_OWNER}</p> }
+
+</BaseLayout>
