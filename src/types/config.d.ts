@@ -4,6 +4,7 @@ declare module "@config" {
       URL: string;
       DESCRIPTION: string;
       LANG: string;
+      DATE_LANG: string;
 
       STYLE: string;
 
