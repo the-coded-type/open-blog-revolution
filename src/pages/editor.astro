@@ -3,9 +3,9 @@ import BaseLayout from "../layouts/baselayout.astro";
 
 import { CONFIG } from "@config";
 
-const gitHubUser = process.env.GITHUB_REPOSITORY_OWNER || CONFIG.EDITOR.GITHUBUSER;
+const gitHubUser = import.meta.env.PUBLIC_GITHUB_USER || CONFIG.EDITOR.GITHUBUSER;
 
-const gitHubRepo = process.env.GITHUB_REPOSITORY && process.env.GITHUB_REPOSITORY.replace(gitHubUser+'/', '') || CONFIG.EDITOR.GITHUBREPO;
+const gitHubRepo = import.meta.env.PUBLIC_GITHUB_REPO && import.meta.env.PUBLIC_GITHUB_REPO.replace(gitHubUser+'/', '') || CONFIG.EDITOR.GITHUBREPO;
 
 const postsCollection = import.meta.glob('../content/posts/*.{mdx, md}', {
   eager: true,

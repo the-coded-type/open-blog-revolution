@@ -14,6 +14,11 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  PUBLIC_GITHUB_USER: ${{ github.repository_owner }}
+  PUBLIC_GITHUB_REPO: ${{ github.repository }}
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
