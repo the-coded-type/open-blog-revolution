@@ -4,12 +4,12 @@
 }
 
     :root {
-    --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --sans-stack: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --serif-stack: 'Charter', 'Bitstream Charter', Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
     }
 
 .sans, .sans * {
-      font-family: var(--system-ui);
+      font-family: var(--sans-stack);
 }
 
 .serif, .serif * {
@@ -17,7 +17,7 @@
 }
 
 .sans-and-serif, .sans-and-serif * {
-    font-family: var(--system-ui);
+    font-family: var(--sans-stack);
 }
 
 .sans-and-serif h1, .sans-and-serif h2, .sans-and-serif h3, .sans-and-serif h4, .sans-and-serif h5, .sans-and-serif h6 {
@@ -29,6 +29,6 @@
 }
 
 .serif-and-sans h1, .serif-and-sans h2, .serif-and-sans h3, .serif-and-sans h4, .serif-and-sans h5, .serif-and-sans h6 {
-    font-family: var(--system-ui);
+    font-family: var(--sans-stack);
 }
 
