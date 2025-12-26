@@ -154,6 +154,7 @@ function remarkExtendImage () {
                                 }
                               }
                             },
+                            {type: 'mdxJsxAttribute', name: 'loading', value: 'lazy'},  
                             {type: 'mdxJsxAttribute', name: 'height', value: 720},  
                             {type: 'mdxJsxAttribute', name: 'width', value: 1080},   
                             {type: 'mdxJsxAttribute', name: 'sizes', value: '(max-width: 360px) 240px, (max-width: 720px) 480px, (max-width: 1600px) 720px'},          
