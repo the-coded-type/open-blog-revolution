@@ -11,12 +11,13 @@ import { defineCollection, z } from 'astro:content';
 const posts = defineCollection({
     type: 'content', // It's good practice to explicitly state the type
     schema: ({ image }) => z.object({
-        status: z.enum(['published', 'draft']),
-        title: z.string(),
-        description: z.string(),
-        pubDate: z.date(),
-        author: z.string(),
-        tags: z.array(z.string()),
+        status: z.preprocess((val) => val === null ? undefined : val, z.enum(['published', 'draft']).default('published')),
+        title: z.preprocess((val) => val === null ? undefined : val, z.string().default('Post title')),
+        description: z.preprocess((val) => val === null ? undefined : val, z.string().default('Post description')),
+        pubDate: z.preprocess((val) => val === null ? undefined : val, z.date().default(new Date('2025-01-01'))),
+        author: z.preprocess((val) => val === null ? undefined : val, z.string().default('Anonymous')),
+        tags: z.preprocess((val) => val === null ? undefined : val, z.array(z.string()).default(['tag'])),
+
         cover: z.object({
             title: z.string().optional(),
             src: z.string().optional(),
