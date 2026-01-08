@@ -5,7 +5,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@config": ["src/js/load-config.ts"],
+      "@config": ["src/lib/load-config.ts"],
       "@media": ["src/media/*"], 
     }
   }
