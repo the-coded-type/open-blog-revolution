@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { CONFIG } from "./src/lib/load-config.ts";
 
-import { remarkExtendImage, remarkExtendBlockquote } from "./src/js/plugins/remark-plugins";
+import { remarkExtendImage, remarkExtendBlockquote } from "./src/lib/remark-plugins";
 
 const isDev = process.argv.includes("dev");
 
@@ -40,6 +40,7 @@ export default defineConfig({
         "@media": "/src/media",
         "@data": "/src/data",
         "@posts": "src/components/posts",
+        "@lib": "src/lib",
       }
     }
   }

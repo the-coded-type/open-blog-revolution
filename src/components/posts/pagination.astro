@@ -1,7 +1,7 @@
 ---
 const { page } = Astro.props;
 
-import { sanitizeUrl } from '../../js/sanitizeUrl';
+import { sanitizeUrl } from '@lib/sanitizeUrl';
 
 ---
 {page.url.first ? <a href={sanitizeUrl(page.url.first)} class="mr-base">First</a> : null}

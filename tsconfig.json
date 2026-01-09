@@ -7,8 +7,9 @@
     "paths": {
       "@posts/*": ["src/components/posts/*"],
       "@config": ["src/lib/load-config.ts"],
-      "@media": ["src/media/*"], 
-      "@data": ["src/data/*"], 
+      "@media/*": ["src/media/*"], 
+      "@data/*": ["src/data/*"], 
+      "@lib/*": ["src/lib/*"]
     }
   }
 }
