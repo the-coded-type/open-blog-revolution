@@ -1,9 +1,33 @@
+@import "./____reset.css";
+@import "./___colors.css";
+@import "./___fonts.css";
+@import "./___vars.css";
+@import "./__typography.css";
+@import "./__utilities.css";
+
+
 body {
     background-color: var(--color-background);
 }
 
 header, article-meta, article-tags, article-footer, elt-data, elt-template, elt-post, post-link {
     display: block;
+}
+
+header, .header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+header ul {
+	margin:  0;
+	padding:  0;
+}
+
+header ul li {
+	display: inline;
+	margin-left: var(--space-base);
 }
 
 ul#all-posts {
