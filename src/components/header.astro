@@ -13,10 +13,10 @@ const images = import.meta.glob('../media/*.{png,jpg,jpeg,webp,svg}', {
 
 const imagesArray = Object.entries(images);
 
-const image = CONFIG.BANNER.src ? imagesArray.filter(([key, val]) => key.endsWith(`${mediaFolder}${CONFIG.BANNER.src}`))[0][1].default : null;
+const image = CONFIG.BANNER?.src ? imagesArray.filter(([key, val]) => key.endsWith(`${mediaFolder}${CONFIG.BANNER.src}`))[0][1].default : null;
 
 ---
-{CONFIG.BANNER.src && (<div class="">
+{CONFIG.BANNER?.src && (<div class="">
     <a href={import.meta.env.BASE_URL} data-astro-prefetch>
     <Picture
     loading={"lazy"}

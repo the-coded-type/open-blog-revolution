@@ -2,10 +2,7 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import { CONFIG as ConfigType } from "./src/lib/load-config.ts";
-
-/** @type {any} */
-const CONFIG = ConfigType;
+import { CONFIG } from "./src/lib/load-config.ts";
 
 import { remarkExtendImage, remarkExtendBlockquote } from "./src/js/plugins/remark-plugins";
 
@@ -39,7 +36,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@config": "src/js/load-config.ts",
+        "@config": "src/lib/load-config.ts",
         "@media": "/src/media"
       }
     }

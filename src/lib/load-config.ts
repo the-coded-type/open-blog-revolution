@@ -27,6 +27,21 @@ const configSchema = z.object({
         label: z.string(),
         url: z.string(),
     })).default([{label: "RSS", url: "rss.xml"}],),
+    BLOG_COVER: z.object({
+        src: z.string().catch(''),
+        alt: z.string().catch('')
+    }).optional(),
+    BANNER: z.object({
+        src: z.string().nullish().transform(v => v ?? '').catch(''),
+        alt: z.string().nullish().transform(v => v ?? '').catch('')
+    }).optional(),
+    EDITOR: z.object({
+        GITHUBUSER: z.string().nullish().transform(v => v ?? '').catch(''),
+        GITHUBREPO: z.string().nullish().transform(v => v ?? '').catch(''),
+    }).catch({
+        GITHUBUSER: '',
+        GITHUBREPO: ''
+    }),
 })
 
 let getUseConfigFromFile = (configFileName:string) => {
@@ -66,8 +81,7 @@ if (!userConfig.success) {
 
 
 // Parse the inner data if success is true, otherwise parse an empty object
-export const CONFIG = userConfig.success ? configSchema.parse(userConfig.data) : configSchema.parse({});
-
+export const CONFIG = configSchema.parse(userConfig.success ? userConfig.data : {});
 // Export the Type so components can use it
 export type ConfigType = z.infer<typeof configSchema>;
 
