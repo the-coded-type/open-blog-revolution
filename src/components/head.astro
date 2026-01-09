@@ -1,7 +1,34 @@
 ---
 import { CONFIG } from "@config";
 
-const canonicalURL = Astro.url; 
+// Safe Canonical URL Logic, prevents canonicalURL crashing if tthere is no CONFIG.URL or new URL throws error
+let canonicalURL = null;
+try {
+    // Only attempt if CONFIG.URL actually has a value
+    if (CONFIG.URL) {
+        canonicalURL = new URL(Astro.url.pathname, CONFIG.URL).toString();
+    }
+} catch (e) {
+    // If CONFIG.URL is invalid, canonicalURL stays null
+    console.warn("OBR Warning: Invalid CONFIG.URL. Canonical tags will be skipped.");
+}
+
+// This will need to be updated to accomodate auto images
+const coverImage = CONFIG.BLOG_COVER || null;
+const rawImagePath = coverImage?.src || "";
+
+// Fail save ogImageUrl - We should also check for the actual existence of the cover file
+let ogImageUrl = null;
+try {
+    if (CONFIG.BLOG_COVER?.src && CONFIG.URL) {
+        ogImageUrl = new URL(CONFIG.BLOG_COVER.src, CONFIG.URL).toString();
+    }
+} catch (e) {
+    console.warn("OBR Warning: No valid blog Cover. OG image tags will be skipped.");
+
+}
+const ogImageAlt = CONFIG.BLOG_COVER?.alt || CONFIG.TITLE;
+
 
 const { title, description, type } = Astro.props;
 ---
@@ -14,17 +41,28 @@ const { title, description, type } = Astro.props;
 
     <meta name="viewport" content="width=device-width" />
 
-    <meta property="og:site_name" content={CONFIG.TITLE}>
-    <meta property="og:title" content={title || CONFIG.TITLE}>
-    <meta property="og:description" content={description || CONFIG.DESCRIPTION}>
-    <meta property="og:url" content={canonicalURL}>
-    <meta property="og:type" content={type || "website"}>
+    <meta property="og:site_name" content={CONFIG.TITLE} />
+    <meta property="og:title" content={title || CONFIG.TITLE} />
+    <meta property="og:description" content={description || CONFIG.DESCRIPTION} />
+    {canonicalURL && <meta property="og:url" content={canonicalURL} />}
+    <meta property="og:type" content={type || "website"} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png"><!-- 180×180 -->
 
-    <meta property="og:image" content={CONFIG.BLOG_COVER?.src ? `${CONFIG.URL}${CONFIG.BLOG_COVER.src}` : ""}>
-    <meta property="og:image:alt" content={CONFIG.BLOG_COVER?.alt ? CONFIG.BLOG_COVER.alt  : ""}>
+    {ogImageUrl &&  (
+        // Will need to adjust og:image:width and og:image:height
+    <>
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:alt" content={ogImageAlt} />
+        
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={ogImageUrl} />
+    </>)
+    }
 
 </head>

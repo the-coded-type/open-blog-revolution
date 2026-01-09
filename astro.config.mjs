@@ -4,6 +4,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { CONFIG } from "./src/lib/load-config.ts";
 
+console.log("import.meta.url", import.meta.url)
+
 import { remarkExtendImage, remarkExtendBlockquote } from "./src/lib/remark-plugins";
 
 const isDev = process.argv.includes("dev");
@@ -36,11 +38,14 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@config": "src/lib/load-config.ts",
+        "@config": "/src/lib/load-config.ts",
         "@media": "/src/media",
         "@data": "/src/data",
-        "@posts": "src/components/posts",
-        "@lib": "src/lib",
+        "@omponents": "/src/components/",
+        "@posts": "/src/components/posts",
+        "@lib": "/src/lib",
+        "@styles": "/src/styles",
+
       }
     }
   }

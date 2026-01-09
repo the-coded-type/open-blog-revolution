@@ -5,11 +5,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@posts/*": ["src/components/posts/*"],
-      "@config": ["src/lib/load-config.ts"],
-      "@media/*": ["src/media/*"], 
-      "@data/*": ["src/data/*"], 
-      "@lib/*": ["src/lib/*"]
+      "@components/*": ["./src/components/*"],
+      "@posts/*": ["./src/components/posts/*"],
+      "@config": ["./src/lib/load-config.ts"],
+      "@media/*": ["./src/media/*"], 
+      "@data/*": ["./src/data/*"], 
+      "@lib/*": ["./src/lib/*"],
+      "@styles/*": ["./src/styles/*"]
+
     }
   }
 }

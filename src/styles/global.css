@@ -1,9 +1,9 @@
-@import "./____reset.css";
-@import "./___colors.css";
-@import "./___fonts.css";
-@import "./___vars.css";
-@import "./__typography.css";
-@import "./__utilities.css";
+@import "@styles/____reset.css";
+@import "@styles/___colors.css";
+@import "@styles/___fonts.css";
+@import "@styles/___vars.css";
+@import "@styles/__typography.css";
+@import "@styles/__utilities.css";
 
 
 body {
@@ -12,6 +12,25 @@ body {
 
 header, article-meta, article-tags, article-footer, elt-data, elt-template, elt-post, post-link {
     display: block;
+}
+
+
+
+ul#all-posts {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul#all-posts li {
+    padding: 0;
+    margin: 0;
+}
+
+/* Navigation */ 
+
+img.banner {
+    margin: 0;
 }
 
 header, .header {
@@ -27,28 +46,5 @@ header ul {
 
 header ul li {
 	display: inline;
-	margin-left: var(--space-base);
-}
-
-ul#all-posts {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-ul#all-posts li {
-    padding: 0;
-    margin: 0;
-}
-
-/* Navigation */ 
-
-
-
-nav ul li {
-    margin-left: 0;
-}
-
-img.banner {
-    margin: 0;
+	margin-left: 0;
 }
