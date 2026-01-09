@@ -1,6 +1,6 @@
 ---
-import Tags from "src/components/tags.astro";
-import Cover from "./cover.astro";
+import Tags from "@posts/tags.astro";
+import Cover from "@posts/cover.astro";
 
 const { hasCover=false, url, title='', titleTag = 'h1', description='', descriptionTag = 'h2', pubDate, tags=[], coverSrc='', coverAlt='', sectionHeaderContentClass='' } = Astro.props;
 
@@ -14,7 +14,7 @@ const readableDate = pubDate && pubDate.toLocaleDateString("en-GB", {
   day: "numeric",
 });
 
-import { sanitizeUrl } from '../js/sanitizeUrl';
+import { sanitizeUrl } from '../../js/sanitizeUrl';
 
 ---
 <header class="article-header">

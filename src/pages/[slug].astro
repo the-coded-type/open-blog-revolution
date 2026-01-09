@@ -1,9 +1,16 @@
 ---
 import Baselayout from "../layouts/baselayout.astro";
 
-import PostHeader from "src/components/post-header.astro";
-import PrintFooter from "src/components/print-footer.astro";
-import PostFooter from "src/components/post-footer.astro";
+import PostHeader from "@posts/post-header.astro";
+import PrintFooter from "@posts/print-footer.astro";
+import PostFooter from "@posts/post-footer.astro";
+import Cover from "@posts/cover.astro";
+
+import { CONFIG } from "@config";
+
+import { frontmatter } from "@data/post-suggestion-heading.mdx";
+
+
 
 import { getCollection, render } from "astro:content";
 
@@ -29,17 +36,10 @@ const { title, tags, pubDate, description, cover } = post.data;
 
 const { Content } = await render(post);
 
-import { CONFIG } from "@config";
-
 const queryFilters = {
   tags: tags,
   posts: slug,
 };
-
-import { frontmatter } from "../data/post-suggestion-heading.mdx";
-
-import Cover from "src/components/cover.astro";
-
 
 ---
 

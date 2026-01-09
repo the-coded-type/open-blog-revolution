@@ -37,7 +37,9 @@ export default defineConfig({
     resolve: {
       alias: {
         "@config": "src/lib/load-config.ts",
-        "@media": "/src/media"
+        "@media": "/src/media",
+        "@data": "/src/data",
+        "@posts": "src/components/posts",
       }
     }
   }
