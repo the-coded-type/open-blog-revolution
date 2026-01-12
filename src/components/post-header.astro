@@ -18,7 +18,7 @@ import { sanitizeUrl } from '../js/sanitizeUrl';
 
 ---
 <header class="article-header">
-    {url ? <Heading><a href={sanitizeUrl(url)}>{title}</a></Heading> : <Heading>{title}</Heading>}
+    {url ? <Heading><a href={sanitizeUrl(url)} data-astro-prefetch>{title}</a></Heading> : <Heading>{title}</Heading>}
     <article-meta>
       <article-date>
         {pubDate && <time datetime={isoDate}>{readableDate}</time>}       

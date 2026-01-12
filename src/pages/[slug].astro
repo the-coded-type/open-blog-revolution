@@ -5,7 +5,7 @@ import PostHeader from "src/components/post-header.astro";
 import PrintFooter from "src/components/print-footer.astro";
 import PostFooter from "src/components/post-footer.astro";
 
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts");
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
   return publishedPosts.map((post) => {
     return {
-      params: { slug: post.slug },
+      params: { slug: post.id },
       props: { post },
     };
   });
@@ -27,7 +27,7 @@ const { slug } = Astro.params;
 
 const { title, tags, pubDate, description, cover } = post.data;
 
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 import { CONFIG } from "@config";
 

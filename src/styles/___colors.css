@@ -1,4 +1,7 @@
 :root {
+  /* Background Definition */
+  --color-background: #FFFFFF;
+  
   /* Pimary Definition */
   --color-primary-chroma: 0.0345;
   --color-primary-hue: 260;

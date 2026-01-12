@@ -9,6 +9,7 @@ async function getRss(url: string) {
         const feed = await parser.parseURL(url);
         return {success: true, title: feed.title, items: feed.items}
     } catch (err) {
+        console.error("RSS error:", err);
         return { success: false, error: `error: ${err}`}
     }
 }
@@ -19,6 +20,8 @@ const blogroll = [];
 
 for (const url of urls) {
     const rss = await getRss(url);
+
+
 
     if (!rss.success || !Array.isArray(rss.items) || rss.items.length ===0) {continue;}
     

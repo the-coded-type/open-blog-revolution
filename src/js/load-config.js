@@ -47,6 +47,7 @@ const DEFAULT_CONFIG = {
     BASE: '/',
     DESCRIPTION: 'Free blog template for writers',
     LANG: 'EN',
+    DATE_LANG: 'fr',
     STYLE: 'sans',
     AUTHOR: 'Iko',
     CONTACT: true,

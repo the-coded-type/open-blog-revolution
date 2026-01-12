@@ -65,6 +65,12 @@ OR:
 
 ## Deploy on GitHub Pages
 
+* On the repo page select *Use this template*/*Create a new repository*
+
+* Give a name to your new repository (this is not the blog name, just tthe GitHub repository name)
+
+* Keep the repository visibility to public (you'll need that to deploy on the free GitHub Pages plan, folks will be able to read your code, but they can't alter it.)
+
 * On your repository page click on **⚙️ Settings** 
 
 * Head to **Pages**
@@ -75,6 +81,10 @@ OR:
 
 * Check the status of your deployment in your repo page under **Actions**
 
+* Your first deploy might fail, don't worry, the site will redeploy automatically when you edit the contents, and every 24 hours at 00:00 UTC.
+
+* To trigger a deploy manually on your *Action* page click on *Deploy to GitHub Pages* under *All Workflows* and then *Run worklfow*
+
 ## How to start Blogging
 
 ⚠️ Now that your blog is installed you need to setup a backend that will allow you to write and publish blogs.
@@ -82,6 +92,8 @@ OR:
 ### If you're comfortable with using markdown and GitHub
 
 You can edit and create posts in the GitHub repo directly.
+
+To make it easier for you to locate th right files we've made an `editor` page. You'll find it at 'yoursite/edior'. The links will take you to the various editable/new post sections on GitHub, you'll need to be logged to your GitHub account to access them.
 
 * You can add posts as `.mdx `files in the `/src/content/posts` folder
 * You can add pages as `.mdx `files in the `/src/pages` folder

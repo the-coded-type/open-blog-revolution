@@ -1,6 +1,8 @@
 ---
 const {item, displayTitle = true, displayLink=false, displayPubdate = true, displayDescription=true } = Astro.props;
 
+import { CONFIG } from "@config";
+
 if (!item) {
   throw new Error("RSS item is required in blogroll-item.astro");
 }
@@ -8,7 +10,7 @@ if (!item) {
 const now:Date = new Date();
 const pubDate:Date = item.pubDate ? new Date(item.pubDate) : now;
 
-const dateFormat = new Intl.DateTimeFormat("en-FR", {
+const dateFormat = new Intl.DateTimeFormat(CONFIG.DATE_LANG || 'fr', {
   timeStyle: "short",
   dateStyle: "short",
 });

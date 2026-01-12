@@ -17,7 +17,7 @@ const { posts, heading, hasCover, titleTag, descriptionTag, sectionHeaderContent
           
     <ul id="all-posts">
       {posts.map( (post: Post) => 
-          <PostPreview hasCover={hasCover} coverSrc={post.data.cover?.src} coverAlt={post.data.cover?.src} url={post.slug} title={post.data.title} titleTag='h2' description={post.data.description} descriptionTag = 'p' pubDate={post.data.pubDate} tags={post.data.tags} sectionHeaderContentClass={sectionHeaderContentClass}/>
+          <PostPreview hasCover={hasCover} coverSrc={post.data.cover?.src} coverAlt={post.data.cover?.src} url={post.id} title={post.data.title} titleTag='h2' description={post.data.description} descriptionTag = 'p' pubDate={post.data.pubDate} tags={post.data.tags} sectionHeaderContentClass={sectionHeaderContentClass}/>
         )
       }
     </ul>

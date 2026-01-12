@@ -18,7 +18,7 @@ const filteredByTag = filteredByDraftStatus.filter( post =>
 );
 
 const filteredBySlug = filteredByTag.filter( post => { 
-  const slug = post.slug;
+  const slug = post.id;
   return !postFilters.includes(slug);
 })
 

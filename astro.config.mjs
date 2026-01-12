@@ -23,6 +23,10 @@ export default defineConfig({
   site: site,
   base: base,
 
+  prefetch: {
+    defaultStrategy: 'load'
+  },
+
   devToolbar: {
       enabled: false
     },
