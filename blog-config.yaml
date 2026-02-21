@@ -28,7 +28,7 @@ BLOG_COVER:  # Blog cover for social networks previews
   src: obr_large.png # Cover url (must be placed in the folder src/public)
   alt: Open Blog Revolution # Cover image alt text, mandatory
 BANNER: # Blog banner, appears above the menu if any
-  src: obr_banner.png  # Banner url (must be placed in the folder src/media)
+  src: obr_bannerszz.png  # Banner url (must be placed in the folder src/media)
   alt: Open Blog Revolution Banner # Banner image alt text, mandatory
 EDITOR:
   GITHUBUSER: # Github user name

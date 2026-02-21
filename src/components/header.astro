@@ -15,16 +15,37 @@ const images = import.meta.glob('../media/*.{png,jpg,jpeg,webp,svg}', {
 
 const imagesArray = Object.entries(images);
 
+const bannerSrc = CONFIG.BANNER?.src || '';
+let bannerImage;
+let imageSrc;
 
-const image = CONFIG.BANNER?.src ? imagesArray.filter(([key, val]) => key.endsWith(`${mediaFolder}${CONFIG.BANNER.src}`))[0][1].default : null;
+if (bannerSrc !== undefined && bannerSrc !== '') {
+    bannerImage = imagesArray.find(([key, val]) => key.endsWith(`${mediaFolder}${CONFIG.BANNER?.src}`));
+    console.log("bannerSrc", bannerSrc, bannerImage)
+};
 
+console.log("check", bannerImage)
+console.log("typeof", typeof bannerImage);
+
+
+if (bannerImage != undefined) {
+    console.log("image not undefined", bannerImage)
+    imageSrc = bannerImage[1].default;
+} else {
+    console.log("image not undefined", bannerImage)
+    imageSrc = null};
+
+console.log("imageSrc", imageSrc)
 ---
-{CONFIG.BANNER?.src && (<div class="">
+{
+//CONFIG.BANNER?.src && (<div class="">
+    imageSrc != null && (<div class="">
+
     <a href={import.meta.env.BASE_URL} data-astro-prefetch>
     <Picture
     loading={"lazy"}
     class="banner"
-    src={image}
+    src={imageSrc}
     formats={["avif", "webp"]}
     alt={CONFIG.BANNER.alt || ''}
     widths={[240, 540, 720, 1280]}
@@ -43,11 +64,11 @@ const image = CONFIG.BANNER?.src ? imagesArray.filter(([key, val]) => key.endsWi
         {CONFIG.CONTACT && (
             <li><a class="mr-0" href={`mailto:${CONFIG.EMAIL}`}>Contact</a></li>
         )}
-                <!-- {CONFIG.MY_SWITCH && (
-            <li><a class="mr-0" href={`${CONFIG.MY_LINK}`}>My Link Title</a></li>
+        <!-- {CONFIG.MY_SWITCH && (
+        <li><a class="mr-0" href={`${CONFIG.MY_LINK}`}>My Link Title</a></li>
         )} -->
         <!-- Uncomment the above to add further links to your header. 
-         Rename/copy the structure to add more options. Uncomment also in 'src/types/config.d.ts' -->
+         ename/copy the structure to add more options. Uncomment also in 'src/types/config.d.ts' -->
         </ul>
     </nav>
 </header>

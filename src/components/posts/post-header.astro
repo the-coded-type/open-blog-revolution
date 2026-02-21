@@ -17,7 +17,7 @@ const readableDate = pubDate && pubDate.toLocaleDateString("en-GB", {
 import { sanitizeUrl } from '@lib/sanitizeUrl';
 
 ---
-<header class="article-header">
+<header class="article-header flex-column">
     {url ? <Heading><a href={sanitizeUrl(url)} data-astro-prefetch>{title}</a></Heading> : <Heading>{title}</Heading>}
     <article-meta>
       <article-date>
