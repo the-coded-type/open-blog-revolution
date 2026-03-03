@@ -3,9 +3,6 @@ import { defineCollection, z } from 'astro:content';
 
 import { loadBlogroll } from '../js/loadBlogroll.js';
 
-import { frontmatter } from "../data/blogroll.mdx";
-
-const urls = frontmatter.urls;
 
 const allBlogRolls = Object.values(import.meta.glob('../data/blogrolls/*.mdx', { eager: true }));
 
