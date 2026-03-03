@@ -1,4 +1,5 @@
 ---
+/* alteernate layout with sidebar */
 import "@styles/global.css";
 
 import "@styles/print.css";
@@ -7,7 +8,7 @@ import "@styles/user-styles.css";
 
 import Head from "../components/head.astro";
 
-import Header from "../components/header.astro";
+import Header from "../components/header.astro"
 import Footer from "src/components/footer.astro";
 
 import { CONFIG } from "@config";
@@ -16,36 +17,30 @@ const { frontmatter } = Astro.props;
 
 const props = frontmatter || Astro.props;
 
-const { title = "", description = "" } = props;
+const { title = "", description = ""} = props;
 
 import BlogrollFeed from "src/components//blogroll/blogroll-feed.astro";
 
 import { frontmatter as blogrollFrontmatter } from "../data/blogroll.mdx";
----
 
+---
 <html lang={CONFIG.LANG}>
-  <Head title={title} description={description} />
-  <body class={CONFIG.STYLE}>
+<Head title={title} description={description} />
+<body class={CONFIG.STYLE}>
     <print-header aria-hidden="true">
       <!-- Caution do not repeat h1, etc -->
     </print-header>
-    
     <Header />
-    <main class="container-xxl centered pw-base flex-wrapper">
-      <div class="sidebar left-sidebar">
-      </div>
+    <main class="container-lg centered pw-base flex-container">
+        <div>
+          <slot />
+        </div>
+        
+        <div class="sidebar">
+          {blogrollFrontmatter.urls && <BlogrollFeed urls={blogrollFrontmatter.urls} />}
+        </div>
 
-      <div class="center-area">
-        <slot />
-      </div>
-      <div class="sidebar right-sidebar">
-        {
-          blogrollFrontmatter.urls && (
-            <BlogrollFeed urls={blogrollFrontmatter.urls} />
-          )
-        }
-      </div>
     </main>
     <Footer />
-  </body>
+</body>
 </html>

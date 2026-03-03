@@ -1,0 +1,65 @@
+---
+import { Picture } from "astro:assets";
+
+import { CONFIG } from "@config";
+
+import { CONSTANTS } from "@lib/constants";
+
+const mediaFolder = CONSTANTS.media; 
+
+import { undefined } from "astro:schema";
+
+const { imageFileName = '', imageAlt = '', imageLink = ''} = Astro.props;
+
+const images = import.meta.glob('../media/*.{png,jpg,jpeg,webp,svg}', {
+  eager: true,
+});
+
+const imagesArray = Object.entries(images);
+
+let image;
+
+let imageSrc;
+
+if (imageFileName !== undefined && imageFileName !== '') {
+    image = imagesArray.find(([key, val]) => key.endsWith(imageFileName));
+    if (image !== undefined ) { imageSrc = image[1].default;} else {imageSrc = null}
+}else {
+    imageSrc = null
+};
+
+---
+
+{ imageSrc ? 
+    (
+    imageLink ?
+    (
+        <a href={imageLink} data-astro-prefetch>
+            <Picture
+            loading={"lazy"}
+            class="banner"
+            src={imageSrc}
+            formats={["avif", "webp"]}
+            alt={imageAlt || ''}
+            widths={[240, 540, 720, 1280]}
+            sizes="(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, 1280px"
+            />
+        </a>
+    )
+    :
+    (
+            <Picture
+            loading={"lazy"}
+            class="banner"
+            src={imageSrc}
+            formats={["avif", "webp"]}
+            alt={imageAlt || ''}
+            widths={[240, 540, 720, 1280]}
+            sizes="(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, 1280px"
+            />
+    )) 
+    :
+    <div>
+        Image ${imageFileName} Missing.
+    </div>
+}

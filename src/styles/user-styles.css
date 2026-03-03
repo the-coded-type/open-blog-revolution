@@ -184,3 +184,40 @@ and the footer is set with the hr element: */
 } */
 
 
+.header-wrapper {
+  width: 60%;
+  position: relative;
+  left: calc(20% + var(--gap) );
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap:nowrap;
+
+  gap: var(--gap);
+}
+
+.sidebar {
+  display: block;
+  min-width: 20%;
+}
+
+
+/* The width att which the sidebar disappears */
+@media (max-width: 50em) {
+  .sidebar {
+    display: none;
+  }
+
+  header {
+    min-width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  .header-wrapper {
+    left:0;
+    width: 100%;
+  }
+}
+
