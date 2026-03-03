@@ -1,43 +1,17 @@
 ---
-import Parser from 'rss-parser';
-
 import BlogRollItem from './blogroll-item.astro';
 
-async function getRss(url: string) {
-    const parser = new Parser();
-    try {
-        const feed = await parser.parseURL(url);
-        return {success: true, title: feed.title, items: feed.items}
-    } catch (err) {
-        console.error("RSS error:", err);
-        return { success: false, error: `error: ${err}`}
-    }
-}
+import { getCollection } from 'astro:content';
 
-const { urls } = Astro.props;
+const blogRollCollection = await getCollection('blogRolls');
 
-const blogroll = [];
+const { category = '' } = Astro.props;
 
-for (const url of urls) {
-    const rss = await getRss(url);
-
-
-
-    if (!rss.success || !Array.isArray(rss.items) || rss.items.length ===0) {continue;}
-    
-    rss.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-
-    const topItem = rss.items[0];
-
-    if (topItem) {
-        topItem.blogTitle = rss.title || null;
-        blogroll.push(topItem)
-    }
-}
-
-blogroll.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
-        
+const selectedBlogs = category !== '' ? blogRollCollection.filter(item => item.data.category == category) : blogRollCollection;
+     
 ---
-<div class="blogroll-feed">
-    {blogroll.map( blog => <BlogRollItem item={blog}/> )}
+<div class="blogroll-feed"> 
+    {
+    selectedBlogs.map( blog => <BlogRollItem item={blog.data}/> )
+    }
 </div>
