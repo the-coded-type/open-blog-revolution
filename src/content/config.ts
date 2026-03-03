@@ -1,8 +1,24 @@
 // 1. Import utilities from `astro:content`
 import { defineCollection, z } from 'astro:content';
 
-import { glob } from 'astro/loaders';
+import { loadBlogroll } from '../js/loadBlogroll.js';
 
+
+const allBlogRolls = Object.values(import.meta.glob('../data/blogrolls/*.mdx', { eager: true }));
+
+let allBlogRollUrls = [];
+
+allBlogRolls.forEach( item => {
+    const category = item.frontmatter.category || 'blogs';
+    const blogUrls = item.frontmatter.urls || [];
+    blogUrls.forEach( blogUrl => {
+        allBlogRollUrls.push({category: category, url: blogUrl })
+    })
+})
+
+
+
+import { glob } from 'astro/loaders';
 
 // 2. Define your collection(s)
 
@@ -25,7 +41,25 @@ const posts = defineCollection({
     }),
 });
 
+// 3. Blogroll collection
 
-// 3. Export a single `collections` object to register your collection(s)
-export const collections = { posts };
+const blogRolls = defineCollection({
+	loader: async () => {
+		const blogRoll = await loadBlogroll(allBlogRollUrls);
+
+		return blogRoll;
+
+	},
+	schema: z.object({
+        category: z.string(),
+		blogTitle: z.string(),
+		title: z.string(),
+		link: z.string(),
+		description: z.string().optional(),
+		pubDate: z.string()
+	})
+})
+
+// 4. Export a single `collections` object to register your collection(s)
+export const collections = { posts, blogRolls };
 
