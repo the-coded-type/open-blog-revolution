@@ -6,8 +6,6 @@ HTML first blog template for writers and devs.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/the-coded-type/open-blog-revolution)
 
-Joing the community on [Discord](https://discord.gg/CtuFfqzg)
-
 ## Features
 
 * **Built with Astro 5:** Blazing fast performance and modern architecture.
