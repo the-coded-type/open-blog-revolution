@@ -7,7 +7,7 @@ import { frontmatter } from "../data/blogroll.mdx";
 
 const urls = frontmatter.urls;
 
-const allBlogRolls = Object.values(import.meta.glob('../data/*.mdx', { eager: true }));
+const allBlogRolls = Object.values(import.meta.glob('../data/blogrolls/*.mdx', { eager: true }));
 
 let allBlogRollUrls = [];
 
