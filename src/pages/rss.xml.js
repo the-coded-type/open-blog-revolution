@@ -8,7 +8,9 @@ const parser = new MarkdownIt();
 import { CONFIG } from "@config";
 
 export async function GET(context) {
-    const blog = await getCollection('posts');
+    const allPosts = await getCollection('posts');
+
+    const blog = allPosts.filter(post => post.data.status == 'published');
 
     let site = context.site?.toString() || import.meta.env.SITE;
 
