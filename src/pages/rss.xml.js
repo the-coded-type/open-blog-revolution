@@ -10,7 +10,9 @@ import { CONFIG } from "@config";
 export async function GET(context) {
     const allPosts = await getCollection('posts');
 
-    const blog = allPosts.filter(post => post.data.status == 'published');
+    const blog = allPosts
+      .filter(post => post.data.status == 'published')
+      .sort((a, b) => a.data.pubDate > b.data.pubDate ? -1 : 1);
 
     let site = context.site?.toString() || import.meta.env.SITE;
 
