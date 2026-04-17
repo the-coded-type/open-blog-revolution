@@ -184,3 +184,12 @@ and the footer is set with the hr element: */
 } */
 
 
+
+.brick-wall {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
